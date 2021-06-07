@@ -1,0 +1,4 @@
+web.py==0.61
+urllib3==1.25.8
+numpy==1.18.2
+scipy==1.4.1

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>QA test</title>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <style>
+        body { margin: 5ex 10ex; font-family: 'Montserrat', sans-serif; }
+        #content { float: left; /*max-width: 65ex;*/ margin-right: 5ex; }
+        h1 { font-weight: normal; margin-bottom: 0; }
+        h2 { font-size: 110%; margin-bottom: 0; }
+        a { text-decoration: none; /*border-bottom: 1px solid gray;*/ }
+        .footer{ padding-top:150px; height:30px; padding-bottom:20px; }
+        .footer p{ line-height:20px; color:#999; font-size:11px; font-family:'Montserrat', sans-serif; }
+        .footer a{ color: #999; }
+        .copyleft { display: inline-block; text-align: right; margin: 0px; -moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); filter: FlipH; -ms-filter: “FlipH”; }
+    </style>
+</head>
+<body>
+
+<h1>问答测试</h1>
+
+<div id=content>
+
+<h2>背景知识：(不超过450字)</h2>
+<div>
+    <textarea rows="10" cols="100" name="knowledge" id="knowledge" maxlength="450">金字塔（英语：pyramid），在建筑学上是指锥体建筑物，著名的有埃及金字塔，还有玛雅卡斯蒂略金字塔、阿兹特克金字塔（太阳金字塔、月亮金字塔）等。一般来说基座为正三角形或四方形等的正多边形，也可能是其他的多边形，侧面由多个三角形或接近三角形的面相接而成，顶部面积非常小，甚至成尖顶状。古代金字塔，是用石块堆叠而成，越高使用材料越少，质心接近基座，可以有效抵挡自然灾害。世界上许多不同的文明都有建造金字塔。在数千年的时间里，金字塔是世界上最大的建筑物。
+    </textarea>
+</div>
+
+<h2>提问：(不超过60字)</h2>
+<div>
+    <textarea rows="5" cols="100" name="question" id="question" maxlength="60">金字塔是什么？</textarea>
+</div>
+
+<div>
+    <input type="button" name="find_anwser" id="find_anwser" value="找答案" style="color: red" />
+</div>
+
+<h2>回答：</h2>
+<div>
+    <textarea rows="5" cols="100" name="anwser" id="anwser" readonly="readonly"></textarea>
+</div>
+
+</div>
+
+<br clear=all />
+
+</body>
+</html>
+
+<script type="text/javascript">
+$(function(){
+
+    $('#find_anwser').click(function(){
+
+        $.ajax({
+            type: "POST",
+            url: "/qa/test",
+            async: true, 
+            timeout: 15000,
+            data: {"k": $("#knowledge").val(),"q": $("#question").val()},
+            dataType: "json",
+            complete: function(xhr, textStatus)
+            {
+                if(xhr.status==200){
+                    var retJson = JSON.parse(xhr.responseText);
+                    if (retJson["ret"]==0){
+                        $("#anwser").val(retJson["data"]["data"]);
+                    }
+                    else{
+                        alert('获取数据失败：'+retJson["msg"]);
+                    }
+                }
+                else{
+                    alert('网络异常!'); 
+                }
+            }
+        });
+
+    });
+
+});
+</script>
