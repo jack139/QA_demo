@@ -13,7 +13,7 @@ APP_DIR=''
 LOG_DIR=''
 
 def start_processor(pname, param=''):
-    cmd0="nohup python3 %s/%s.pyc %s >> %s/%s.log 2>&1 &" % \
+    cmd0="nohup python3 %s/%s.pyc %s >> %s/qa_%s.log 2>&1 &" % \
         (APP_DIR, pname, param, LOG_DIR, pname+param.replace(' ',''))
     print('start process: ', cmd0)
     os.system(cmd0)
