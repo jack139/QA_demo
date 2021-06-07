@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # 本地调试
+# qa_demo/gotalk/gotalk .
 # uwsgi --http 127.0.0.1:8000  --wsgi-file qa.py --check-static ../
 
 

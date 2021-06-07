@@ -112,5 +112,5 @@ func RunServer() {
 		Handler: fasthttplogger.Combined(r.Handler),
 		Name: "FastHttpLogger",
 	}
-	log.Fatal(s.ListenAndServe("127.0.0.1:8000"))
+	log.Fatal(s.ListenAndServe("127.0.0.1:8888"))
 }

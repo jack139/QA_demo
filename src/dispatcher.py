@@ -13,7 +13,6 @@ from config.setting import REDIS_CONFIG, MAX_DISPATCHER_WORKERS
 import binascii
 
 from gotalk_lib import gotalk
-from talkbot_lib import gensim_bot, gensim_index
 
 logger = logger.get_logger(__name__)
 
@@ -21,15 +20,7 @@ logger = logger.get_logger(__name__)
 def process_api(request_id, request_msg):
     request = request_msg
     try:
-        if request['api']=='talkbot':
-            r = gensim_bot.qa_bot_db(request['data'])
-            result = { 'code' : 200, 'data' : { 'msg':'success', 'reply' : r, 'request_id' : request_id} }
-
-        elif request['api']=='talkbot_calc':
-            r = gensim_index.index_from_db(helper.db)
-            result = { 'code' : 200, 'data' : { 'msg':'success', 'result' : r, 'request_id' : request_id} }
-
-        elif request['api']=='gotalk_qa':
+        if request['api']=='gotalk_qa':
             r = gotalk.qa(request['data'])
             result = { 'code' : 200, 'data' : { 'msg':'success', 'reply' : r, 'request_id' : request_id} }
 

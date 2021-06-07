@@ -11,7 +11,7 @@ urllib3.disable_warnings()
 # 调用 gotalk的网络参数
 pool = urllib3.PoolManager(num_pools=2, timeout=180, retries=False)
 
-host = 'http://127.0.0.1:8000'
+host = 'http://127.0.0.1:8888'
 url = host+'/qa'
 
 # 清除文本中非中文非英文的字符（例如：日文、阿拉伯文）
