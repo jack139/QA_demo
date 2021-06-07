@@ -12,7 +12,7 @@ REDIS_CONFIG = {
     'SERVER' : '127.0.0.1',
     'PORT'   : '7480',
     'PASSWD' : 'e18ffb7484f4d69c2acb40008471a71c',
-    'REQUEST-QUEUE' : 'cardnum-synchronous-asynchronous-queue',
+    'REQUEST-QUEUE' : 'qa_demo-synchronous-asynchronous-queue',
     'REQUEST-QUEUE-NUM' : 1,
     'MESSAGE_TIMEOUT' : 10, # 结果返回消息超时，单位：秒
 }
