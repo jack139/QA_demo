@@ -54,6 +54,3 @@ class handler:
 
         # 返回
         return json.dumps({'ret' : 0, 'data' : { 'data' : anwser }})
-
-    def GET(self):
-        return self.POST()
