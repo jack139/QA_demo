@@ -1,3 +1,5 @@
+$def with (name)
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -50,23 +52,23 @@
 </html>
 
 <script type="text/javascript">
-$(function(){
+$$(function(){
 
-    $('#find_anwser').click(function(){
+    $$('#find_anwser').click(function(){
 
-        $.ajax({
+        $$.ajax({
             type: "POST",
             url: "/qa/test",
             async: true, 
             timeout: 15000,
-            data: {"k": $("#knowledge").val(),"q": $("#question").val()},
+            data: {"k": $$("#knowledge").val(),"q": $$("#question").val()},
             dataType: "json",
             complete: function(xhr, textStatus)
             {
                 if(xhr.status==200){
                     var retJson = JSON.parse(xhr.responseText);
                     if (retJson["ret"]==0){
-                        $("#anwser").val(retJson["data"]["data"]);
+                        $$("#anwser").val(retJson["data"]["data"]);
                     }
                     else{
                         alert('获取数据失败：'+retJson["msg"]);

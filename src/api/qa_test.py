@@ -6,7 +6,7 @@ import app_helper
 
 url = ('/qa/test')
 
-# 检查license, 返回初始参数
+# 文档测试
 class handler:
     def POST(self):
         web.header('Content-Type', 'application/json')
